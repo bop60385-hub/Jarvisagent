@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="Jarvis Agent icon">
+  <rect width="256" height="256" rx="56" fill="#020617"/>
+  <path d="M64 84h128v24H64zM64 148h128v24H64zM92 112h72v24H92zM92 176h72v24H92z" fill="#38bdf8"/>
+  <circle cx="128" cy="128" r="38" fill="#f8fafc"/>
+  <path d="M128 96c17.6 0 32 14.4 32 32s-14.4 32-32 32-32-14.4-32-32 14.4-32 32-32z" fill="#0f172a"/>
+</svg>

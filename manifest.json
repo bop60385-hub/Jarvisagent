@@ -1,0 +1,19 @@
+{
+  "name": "Jarvis Agent",
+  "short_name": "Jarvis",
+  "description": "A mobile-friendly web app experience for your Jarvis agent.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#0f172a",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
