@@ -17,6 +17,8 @@ const listeningIndicator = document.getElementById('listeningIndicator');
 const listeningText = document.getElementById('listeningText');
 const statusDot = document.getElementById('statusDot');
 const statusText = document.getElementById('statusText');
+const statusLine = document.getElementById('statusLine');
+const pulseRing = document.querySelector('.pulse-ring');
 
 // Speech Recognition Setup
 let recognition = null;
@@ -58,18 +60,18 @@ function addMessage(text, type = 'system-message') {
 }
 
 // ============================================
-// Basic Reply Logic
+// Built-in Commands and Responses
 // ============================================
 
 function getJarvisReply(userInput) {
   const input = userInput.toLowerCase().trim();
 
-  // Greeting
-  if (input.match(/^hello|^hi|^hey/i)) {
+  // Greeting: "hello"
+  if (input.match(/^hello$|^hi$|^hey$/i)) {
     return 'Hello Benny. Jarvis online.';
   }
 
-  // Time
+  // Time: "what time is it"
   if (input.match(/what.*time|tell.*time|current time/i)) {
     const now = new Date();
     const timeStr = now.toLocaleTimeString([], {
@@ -80,13 +82,23 @@ function getJarvisReply(userInput) {
     return `The current time is ${timeStr}.`;
   }
 
-  // Stop
-  if (input.match(/^stop|^quit|^exit/i)) {
-    return 'Stopping. Ready for next command.';
+  // Good morning: "good morning"
+  if (input.match(/^good morning$/i)) {
+    return 'Good morning Benny.';
   }
 
-  // Default
-  return 'I heard you. AI connection will be added next.';
+  // Weather: "weather"
+  if (input.match(/^weather$|tell.*weather|weather today/i)) {
+    return 'Weather integration coming soon. Check your local forecast.';
+  }
+
+  // Stop: "stop"
+  if (input.match(/^stop$|^quit$|^exit$/i)) {
+    return 'Voice session terminated.';
+  }
+
+  // Default fallback
+  return 'I heard you. How can I help?';
 }
 
 // ============================================
@@ -107,7 +119,8 @@ function speak(text) {
   const maleVoice = voices.find(
     (voice) =>
       voice.name.includes('Male') ||
-      voice.name.includes('Google UK English Male')
+      voice.name.includes('Google UK English Male') ||
+      voice.name.includes('Microsoft Mark')
   );
   if (maleVoice) {
     utterance.voice = maleVoice;
@@ -171,6 +184,7 @@ if (recognition) {
     isListening = true;
     micButton.classList.add('active');
     listeningIndicator.classList.add('active');
+    pulseRing?.classList.add('active');
     transcriptText.textContent = '';
     updateStatus('Listening');
   };
@@ -206,6 +220,7 @@ if (recognition) {
     isListening = false;
     micButton.classList.remove('active');
     listeningIndicator.classList.remove('active');
+    pulseRing?.classList.remove('active');
 
     // Get final transcript
     const finalText = transcriptText.textContent.trim();
@@ -221,6 +236,7 @@ if (recognition) {
     isListening = false;
     micButton.classList.remove('active');
     listeningIndicator.classList.remove('active');
+    pulseRing?.classList.remove('active');
 
     const errorMessage =
       event.error === 'network'
@@ -277,6 +293,12 @@ textInput.addEventListener('keypress', (event) => {
 
 function updateStatus(status) {
   statusText.textContent = status;
+  if (statusLine) {
+    statusLine.textContent = status === 'Listening' ? 'Listening for voice input' : 
+                             status === 'Speaking' ? 'Jarvis is speaking' :
+                             'Ready for voice input';
+  }
+
   if (status === 'Listening') {
     statusDot.style.boxShadow = '0 0 15px var(--accent-blue)';
   } else if (status === 'Speaking') {
@@ -310,3 +332,12 @@ if ('onvoiceschanged' in window.speechSynthesis) {
 
 // Get voices immediately if available
 window.speechSynthesis.getVoices();
+
+// ============================================
+// Initialize on Page Load
+// ============================================
+
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('Jarvis Voice Assistant initialized');
+  console.log('Ready for voice input');
+});
