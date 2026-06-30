@@ -3,48 +3,89 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="theme-color" content="#0f172a" />
+    <meta name="theme-color" content="#0a0e27" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="apple-mobile-web-app-title" content="Jarvis Agent" />
-    <title>Jarvis Agent</title>
+    <meta name="apple-mobile-web-app-title" content="Jarvis" />
+    <title>Jarvis Voice Assistant</title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="icon" type="image/svg+xml" href="/icon.svg" />
     <link rel="apple-touch-icon" href="/icon.svg" />
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <main class="app-shell">
-      <section class="hero-card">
-        <div class="badge">AI Assistant</div>
-        <h1>Jarvis Agent</h1>
-        <p>
-          A polished, installable home-screen experience for your autonomous intelligence agent.
-        </p>
-        <div class="status-row">
-          <span class="status-dot"></span>
-          <span id="statusText">Ready to launch on your iPhone</span>
+    <main class="app-container">
+      <!-- Header -->
+      <header class="header">
+        <div class="header-content">
+          <h1 class="title">JARVIS</h1>
+          <div class="status-indicator">
+            <span class="status-dot" id="statusDot"></span>
+            <span class="status-text" id="statusText">Ready</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Conversation Display -->
+      <section class="conversation-area">
+        <div class="messages-container" id="messagesContainer">
+          <div class="message system-message">
+            <div class="message-content">Good morning, Benny. Jarvis online.</div>
+            <div class="message-time">Now</div>
+          </div>
         </div>
       </section>
 
-      <section class="info-card">
-        <h2>What this app does</h2>
-        <ul>
-          <li>Shows your agent as a mobile-friendly experience.</li>
-          <li>Supports “Add to Home Screen” on iPhone.</li>
-          <li>Works offline after the first visit.</li>
-        </ul>
+      <!-- Voice Control Center -->
+      <section class="voice-control">
+        <!-- Listening Indicator -->
+        <div class="listening-indicator" id="listeningIndicator">
+          <div class="waveform">
+            <span class="wave"></span>
+            <span class="wave"></span>
+            <span class="wave"></span>
+            <span class="wave"></span>
+          </div>
+          <p id="listeningText">Listening...</p>
+        </div>
+
+        <!-- Microphone Button -->
+        <div class="mic-container">
+          <button class="mic-button" id="micButton" aria-label="Start voice input">
+            <svg class="mic-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
+              <path d="M17 16.91c-1.48 1.46-3.51 2.36-5.77 2.36-2.26 0-4.29-.9-5.77-2.36l-1.1 1.1c1.86 1.86 4.41 3.02 7.07 3.02s5.21-1.16 7.07-3.02l-1.1-1.1zM12 20c2.21 0 4.2-.9 5.64-2.35l1.42 1.41C16.99 21.13 14.7 22 12 22s-4.99-.87-6.92-2.6l1.42-1.41C7.8 19.1 9.79 20 12 20z"/>
+            </svg>
+          </button>
+          <div class="mic-label">Tap to speak</div>
+        </div>
+
+        <!-- Transcript Display -->
+        <div class="transcript-box" id="transcriptBox">
+          <p id="transcriptText"></p>
+        </div>
+
+        <!-- Fallback Text Input -->
+        <div class="text-input-group">
+          <input
+            type="text"
+            id="textInput"
+            class="text-input"
+            placeholder="Or type your question..."
+            aria-label="Text input for questions"
+          />
+          <button class="send-button" id="sendButton" aria-label="Send message">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M16.6915026,12.4744748 L3.50612381,13.2599618 C3.19218622,13.2599618 3.03521743,13.4170592 3.03521743,13.5741566 L1.15159189,20.0151496 C0.8376543,20.8006365 0.99,21.89 1.77946707,22.52 C2.41,22.99 3.50612381,23.1 4.13399899,22.8429026 L21.714504,14.0454487 C22.6563168,13.5741566 23.1272231,12.6315722 22.9702544,11.6889879 L4.13399899,1.16346273 C3.34915502,0.9 2.40734225,0.9 1.77946707,1.4429427 C0.994623095,2.0742821 0.837654326,3.16346273 1.15159189,3.94894966 L3.03521743,10.5165575 C3.03521743,10.6736549 3.19218622,10.8307523 3.50612381,10.8307523 L16.6915026,11.6162392 C16.6915026,11.6162392 17.1624089,11.6162392 17.1624089,12.0874635 C17.1624089,12.5586879 16.6915026,12.4744748 16.6915026,12.4744748 Z"/>
+            </svg>
+          </button>
+        </div>
       </section>
 
-      <section class="info-card">
-        <h2>Install on iPhone</h2>
-        <ol>
-          <li>Open this page in Safari on your iPhone.</li>
-          <li>Tap the Share button.</li>
-          <li>Select “Add to Home Screen”.</li>
-          <li>Confirm and launch it from the home screen.</li>
-        </ol>
-      </section>
+      <!-- Info Footer -->
+      <footer class="footer">
+        <p class="footer-text">AI connection coming soon</p>
+      </footer>
     </main>
 
     <script src="/app.js"></script>
