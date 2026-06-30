@@ -1,19 +1,55 @@
 {
-  "name": "Jarvis Agent",
+  "name": "Jarvis Voice Assistant",
   "short_name": "Jarvis",
-  "description": "A mobile-friendly web app experience for your Jarvis agent.",
+  "description": "A mobile voice assistant with speech recognition and text-to-speech powered by Jarvis.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#020617",
-  "theme_color": "#0f172a",
-  "orientation": "portrait",
+  "background_color": "#0a0e27",
+  "theme_color": "#0a0e27",
+  "orientation": "portrait-primary",
+  "categories": ["productivity", "utilities"],
+  "screenshots": [
+    {
+      "src": "/icon.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
   "icons": [
     {
       "src": "/icon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any"
+    },
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Start Voice Input",
+      "short_name": "Voice",
+      "description": "Start voice recognition",
+      "url": "/?action=voice",
+      "icons": [
+        {
+          "src": "/icon.svg",
+          "sizes": "any",
+          "type": "image/svg+xml"
+        }
+      ]
     }
   ]
 }
